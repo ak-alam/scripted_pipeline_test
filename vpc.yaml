@@ -165,21 +165,21 @@ Resources:
       Domain: VPC
 
   # Public and private route table subnet associations   
-  PubSub1RTAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      SubnetId: !Ref PubSub1
-      RouteTableId: !Ref PubRT
+  # PubSub1RTAssociation:
+  #   Type: AWS::EC2::SubnetRouteTableAssociation
+  #   Properties:
+  #     SubnetId: !Ref PubSub1
+  #     RouteTableId: !Ref PubRT
   # PubSub2RTAssociation:
   #   Type: AWS::EC2::SubnetRouteTableAssociation
   #   Properties:
   #     SubnetId: !Ref PubSub2
   #     RouteTableId: !Ref PubRT
-  PrivateSub1RTAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      SubnetId: !Ref PrivateSub1
-      RouteTableId: !Ref PrivateRT
+  # PrivateSub1RTAssociation:
+  #   Type: AWS::EC2::SubnetRouteTableAssociation
+  #   Properties:
+  #     SubnetId: !Ref PrivateSub1
+  #     RouteTableId: !Ref PrivateRT
   # PrivateSub2RTAssociation:
   #   Type: AWS::EC2::SubnetRouteTableAssociation
   #   Properties:
