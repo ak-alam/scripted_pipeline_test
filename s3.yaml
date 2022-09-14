@@ -4,7 +4,6 @@ Description: CloudFormation template for s3 bucket
 Parameters:
   bucketName:
     Description: Your environment name
-    default: akbar-jenkins
     Type: String
 
 Resources:
