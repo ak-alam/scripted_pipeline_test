@@ -1,6 +1,6 @@
 node {
     stage('Code Pull'){
-        git branch: 'main', credentialsId: 'github-auth', url: 'https://github.com/ak-alam/scripted_pipeline_test.git'
+        git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/ak-alam/scripted_pipeline_test.git'
     }
     stage('Check') { 
         try {
