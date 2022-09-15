@@ -1,7 +1,7 @@
 [
     {
         "ParameterKey": "bucketname",
-        "ParameterValue": "jenkins-bucket"
+        "ParameterValue": "akbar-bucket"
     }
 
 ]
