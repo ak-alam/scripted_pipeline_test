@@ -1,0 +1,7 @@
+[
+    {
+        "ParameterKey": "bucketname",
+        "ParameterValue": "jenkins-bucket"
+    }
+
+]
