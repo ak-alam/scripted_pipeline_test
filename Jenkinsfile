@@ -3,9 +3,11 @@ node {
         git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/ak-alam/scripted_pipeline_test.git'
     }
     stage('Check') { 
-        try {
         def status = sh(returnStatus: true, script: 'aws cloudformation describe-stacks --stack-name akbar-s3 --output text --region "us-east-2"')
         sh "echo error_status: $status"
+        try {
+        // def status = sh(returnStatus: true, script: 'aws cloudformation describe-stacks --stack-name akbar-s3 --output text --region "us-east-2"')
+        // sh "echo error_status: $status"
         println status
         if ( status.equals(255) ) {
             sh "echo Stack Not Exist! Creating New Stack"
