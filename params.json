@@ -1,7 +1,7 @@
 [
     {
         "ParameterKey": "bucketname",
-        "ParameterValue": "akbar-bucket"
+        "ParameterValue": "akbar-jenkins-test-bucket-name"
     }
 
 ]
