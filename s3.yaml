@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: CloudFormation template for s3 bucket 
     
 Parameters:
-  bucketName:
+  bucket_name:
     Description: Your environment name
     Type: String
 
@@ -11,4 +11,4 @@ Resources:
     Type: AWS::S3::Bucket
     Description: Creating Amazon S3 bucket from CloudFormation
     Properties:
-      BucketName: !Ref bucketName
+      BucketName: !Ref bucket_name
