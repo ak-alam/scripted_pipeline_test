@@ -24,6 +24,7 @@ node {
         } catch (Exception e){
             // println "Exception occurred: + e.toString()"
             sh 'echo No updates are to be performed!'
+            sh "echo error_status: $status"
         } 
     }
 }
