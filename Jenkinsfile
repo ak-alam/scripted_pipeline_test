@@ -1,6 +1,14 @@
+properties([parameters([booleanParam('delete_stack')])])
+
 node {
     stage('Code Pull'){
         git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/ak-alam/scripted_pipeline_test.git'
+    }
+    stage('delete'){
+        if (params.delete_stack == true ) {
+            sh 'echo Deleting stack'
+            sh 'aws cloudformation delete-stack --stack-name akbar-s3 --region "us-east-2"'
+        }
     }
     stage('Check') { 
         def status = sh(returnStatus: true, script: 'aws cloudformation describe-stacks --stack-name akbar-s3 --output text --region "us-east-2"')
@@ -15,6 +23,7 @@ node {
             sh 'aws cloudformation create-stack --stack-name akbar-s3 \
                 --template-body file:///var/lib/jenkins/workspace/scripted-cf/s3.yaml \
                 --parameters ParameterKey=bucketName,ParameterValue=akbar-jenkins --region "us-east-2"'
+                
 
         } else {
             sh "echo Stack Exist! Updating Stack."
