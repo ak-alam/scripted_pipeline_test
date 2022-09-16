@@ -18,20 +18,20 @@ Parameters:
     Description: Please enter the IP range (CIDR notation) for the public subnet 1
     Type: String
 
-  # PublicSubnet2CIDR:
-  #   Default: 10.0.2.0/24
-  #   Description: Please enter the IP range (CIDR notation) for the public subnet 2
-  #   Type: String
+  PublicSubnet2CIDR:
+    Default: 10.0.2.0/24
+    Description: Please enter the IP range (CIDR notation) for the public subnet 2
+    Type: String
 
   PrivateSubnet1CIDR:
     Default: 10.0.3.0/24
     Description: Please enter the IP range (CIDR notation) for the private subnet 1
     Type: String
 
-  # PrivateSubnet2CIDR:
-  #   Default: 10.0.4.0/24
-  #   Description: Please enter the IP range (CIDR notation) for the private subnet 2
-  #   Type: String
+  PrivateSubnet2CIDR:
+    Default: 10.0.4.0/24
+    Description: Please enter the IP range (CIDR notation) for the private subnet 2
+    Type: String
 
 
 Resources:
@@ -56,16 +56,16 @@ Resources:
       Tags:
       - Key: Name
         Value: !Join ["-", [ak, AkPubSub1, !Ref EnvParam]]
-  # PubSub2:
-  #   Type: AWS::EC2::Subnet
-  #   Properties:
-  #     VpcId: !Ref VPC
-  #     AvailabilityZone: !Select [1, !GetAZs '']
-  #     CidrBlock: !Ref PublicSubnet2CIDR
-  #     MapPublicIpOnLaunch: true
-  #     Tags:
-  #     - Key: Name
-  #       Value: !Join ["-", [ak, AkPubSub2, !Ref EnvParam]] 
+  PubSub2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [1, !GetAZs '']
+      CidrBlock: !Ref PublicSubnet2CIDR
+      MapPublicIpOnLaunch: true
+      Tags:
+      - Key: Name
+        Value: !Join ["-", [ak, AkPubSub2, !Ref EnvParam]] 
   
   PrivateSub1:
     Type: AWS::EC2::Subnet
@@ -78,16 +78,16 @@ Resources:
       - Key: Name
         Value: !Join ["-", [ak, AkPrivateSub1, !Ref EnvParam]]
   
-  # PrivateSub2:
-  #   Type: AWS::EC2::Subnet
-  #   Properties:
-  #     VpcId: !Ref VPC
-  #     AvailabilityZone: !Select [1, !GetAZs '']
-  #     CidrBlock: !Ref PrivateSubnet2CIDR
-  #     MapPublicIpOnLaunch: false
-  #     Tags:
-  #     - Key: Name
-  #       Value: !Join ["-", [ak, AkPrivateSub2, !Ref EnvParam]]
+  PrivateSub2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [1, !GetAZs '']
+      CidrBlock: !Ref PrivateSubnet2CIDR
+      MapPublicIpOnLaunch: false
+      Tags:
+      - Key: Name
+        Value: !Join ["-", [ak, AkPrivateSub2, !Ref EnvParam]]
 
 
   #Public and Private Route Table Creation and route assosication.
