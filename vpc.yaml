@@ -109,62 +109,63 @@ Resources:
   #     - Key: Name
   #       Value: !Join ["-", [ak, AkPrivateSub2, !Ref EnvParam]]
 
+
   #Public and Private Route Table Creation and route assosication.
-  PubRT:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-        - Key: Name
-          Value: !Join ["-", [ak, PubRT, !Ref EnvParam]]
-  IGWRoute:
-    Type: AWS::EC2::Route
-    DependsOn: IGWAttachment
-    Properties:
-      RouteTableId: !Ref PubRT
-      DestinationCidrBlock: '0.0.0.0/0'
-      GatewayId: !Ref IGW        
-  PrivateRT:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-        - Key: Name
-          Value: !Join ["-", [ak, AkPrivateRT, !Ref EnvParam]]
-  NATGWRoute:
-    Type: AWS::EC2::Route
-    DependsOn: NatGW
-    Properties:
-      RouteTableId: !Ref PrivateRT
-      DestinationCidrBlock: '0.0.0.0/0'
-      NatGatewayId: !Ref NatGW  
+  # PubRT:
+  #   Type: AWS::EC2::RouteTable
+  #   Properties:
+  #     VpcId: !Ref VPC
+  #     Tags:
+  #       - Key: Name
+  #         Value: !Join ["-", [ak, PubRT, !Ref EnvParam]]
+  # IGWRoute:
+  #   Type: AWS::EC2::Route
+  #   DependsOn: IGWAttachment
+  #   Properties:
+  #     RouteTableId: !Ref PubRT
+  #     DestinationCidrBlock: '0.0.0.0/0'
+  #     GatewayId: !Ref IGW        
+  # PrivateRT:
+  #   Type: AWS::EC2::RouteTable
+  #   Properties:
+  #     VpcId: !Ref VPC
+  #     Tags:
+  #       - Key: Name
+  #         Value: !Join ["-", [ak, AkPrivateRT, !Ref EnvParam]]
+  # NATGWRoute:
+  #   Type: AWS::EC2::Route
+  #   DependsOn: NatGW
+  #   Properties:
+  #     RouteTableId: !Ref PrivateRT
+  #     DestinationCidrBlock: '0.0.0.0/0'
+  #     NatGatewayId: !Ref NatGW  
 
-  #Internet Gateway and Nat Gateway
-  IGW:
-    Type: AWS::EC2::InternetGateway
-    Properties:
-      Tags:
-      - Key: Name
-        Value:  !Join ["-", [ak, AkPrivateRT, !Ref EnvParam]]
-  IGWAttachment:
-    Type: AWS::EC2::VPCGatewayAttachment
-    Properties:
-      InternetGatewayId: !Ref IGW
-      VpcId: !Ref VPC
-  NatGW:
-    Type: AWS::EC2::NatGateway
-    Properties:
-      AllocationId: !GetAtt NatGWEIP.AllocationId
-      SubnetId: !Ref PubSub1
-      Tags:
-      - Key: Name
-        Value: !Join ["-", [ak, NatGW, !Ref EnvParam]]
-  NatGWEIP:
-    Type: AWS::EC2::EIP
-    Properties:
-      Domain: VPC
+  # #Internet Gateway and Nat Gateway
+  # IGW:
+  #   Type: AWS::EC2::InternetGateway
+  #   Properties:
+  #     Tags:
+  #     - Key: Name
+  #       Value:  !Join ["-", [ak, AkPrivateRT, !Ref EnvParam]]
+  # IGWAttachment:
+  #   Type: AWS::EC2::VPCGatewayAttachment
+  #   Properties:
+  #     InternetGatewayId: !Ref IGW
+  #     VpcId: !Ref VPC
+  # NatGW:
+  #   Type: AWS::EC2::NatGateway
+  #   Properties:
+  #     AllocationId: !GetAtt NatGWEIP.AllocationId
+  #     SubnetId: !Ref PubSub1
+  #     Tags:
+  #     - Key: Name
+  #       Value: !Join ["-", [ak, NatGW, !Ref EnvParam]]
+  # NatGWEIP:
+  #   Type: AWS::EC2::EIP
+  #   Properties:
+  #     Domain: VPC
 
-  # Public and private route table subnet associations   
+  # # Public and private route table subnet associations   
   # PubSub1RTAssociation:
   #   Type: AWS::EC2::SubnetRouteTableAssociation
   #   Properties:
