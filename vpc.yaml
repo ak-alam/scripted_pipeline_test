@@ -1,27 +1,7 @@
 AWSTemplateFormatVersion: 2010-09-09
 
 Description: VPC Stack
-Metadata:
-  AWS::CloudFormation::Interface: 
-    ParameterGroups:
-      - 
-        Label: 
-          default: "Your environment name"
-        Parameters: 
-          - EnvParam
-      - 
-        Label: 
-          default: "VPC CIDR"
-        Parameters: 
-          - VpcCIDR
-      - 
-        Label: 
-          default: "Subnet CIDR"
-        Parameters:
-          - PublicSubnet1CIDR
-          # - PublicSubnet2CIDR
-          - PrivateSubnet1CIDR
-          # - PrivateSubnet2CIDR
+
 
 Parameters:
   EnvParam:
