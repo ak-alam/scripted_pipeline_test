@@ -1,4 +1,4 @@
-def slackNotification(){
+def call(){
     def COLOR_MAP = [
     'SUCCESS': 'good',
     'FAILURE': 'danger',
